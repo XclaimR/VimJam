@@ -8,11 +8,14 @@ public class PlayerController : MonoBehaviour
     public float speed = 5.0f;
     public bool isOnGround = false;
     public bool flipY;
+    public float coolDown = 0.5f;
+
 
     private Transform _transform;
     private Rigidbody2D _rigidbody;
     private SpriteRenderer mySpriteRenderer;
     private bool facingRight = true;
+    private float nextFlipTime = 0f;
 
     //Stuff Added...
     public bool onlyAffectPlayer = true;
@@ -31,7 +34,10 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         MovePlayer();
-        ChangeGravity();
+        if (Time.time >= nextFlipTime)
+        {
+            ChangeGravity();
+        }
     }
 
     void MovePlayer()
@@ -68,7 +74,9 @@ public class PlayerController : MonoBehaviour
             }
 
             //Store your new value in your variable
-            flipY = mySpriteRenderer.flipY;
+            //flipY = mySpriteRenderer.flipY;
+            //Cooldown to prevent smashing buttons
+            nextFlipTime = Time.time + 1 / coolDown;
         }
     }
 
