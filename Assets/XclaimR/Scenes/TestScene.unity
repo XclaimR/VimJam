@@ -351,13 +351,14 @@ GameObject:
   m_Component:
   - component: {fileID: 624672192}
   - component: {fileID: 624672191}
+  - component: {fileID: 624672193}
   m_Layer: 11
   m_Name: Collectible
   m_TagString: Collectible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &624672191
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -416,12 +417,28 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 624672190}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.201, y: 0.178, z: 0}
+  m_LocalPosition: {x: -12.86, y: -3.03, z: 0}
   m_LocalScale: {x: 0.3657562, y: 0.3657562, z: 0.3657562}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &624672193
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624672190}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.50000006
 --- !u!1 &650168420 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3359744836462406696, guid: 7a940b5d98f57534bbaac6e6aec8f32f,
@@ -1363,6 +1380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectible: {fileID: 624672190}
+  text: {fileID: 982834576}
 --- !u!1 &1535114037
 GameObject:
   m_ObjectHideFlags: 0
