@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public bool isOnGround = false;
     public bool flipY;
     public float coolDown = 0.5f;
+    public Cooldown cooldownbar;
 
 
     private Transform _transform;
@@ -28,6 +29,7 @@ public class PlayerController : MonoBehaviour
 
         //You put this line on Update method, it's better to put it in Start!
         mySpriteRenderer = GetComponent<SpriteRenderer>();
+        cooldownbar.SetMaxValue(1/coolDown);
     }
 
     // Update is called once per frame
@@ -38,6 +40,10 @@ public class PlayerController : MonoBehaviour
         {
             ChangeGravity();
         }
+        else
+        {
+            cooldownbar.SetCoolDown(Time.time-(nextFlipTime - 1/coolDown));
+        }
     }
 
     void MovePlayer()
@@ -45,7 +51,7 @@ public class PlayerController : MonoBehaviour
         if (isOnGround)
         {
             float translate = Input.GetAxis("1PHorizontal") * speed * Time.deltaTime;
-            Debug.Log(translate);
+            //Debug.Log(translate);
             if(translate < 0 && facingRight == true)
             {
                 Flip();
@@ -77,6 +83,7 @@ public class PlayerController : MonoBehaviour
             //flipY = mySpriteRenderer.flipY;
             //Cooldown to prevent smashing buttons
             nextFlipTime = Time.time + 1 / coolDown;
+            cooldownbar.SetCoolDown(0);
         }
     }
 

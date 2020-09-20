@@ -9,6 +9,7 @@ public class EnemyController : MonoBehaviour
     public bool isOnGround = false;
     public bool flipY;
     public float coolDown = 0.5f;
+    public Cooldown cooldownbar;
 
     private Transform _transform;
     private Rigidbody2D _rigidbody;
@@ -27,6 +28,7 @@ public class EnemyController : MonoBehaviour
 
         //You put this line on Update method, it's better to put it in Start!
         mySpriteRenderer = GetComponent<SpriteRenderer>();
+        cooldownbar.SetMaxValue(1 / coolDown);
     }
 
     // Update is called once per frame
@@ -37,6 +39,10 @@ public class EnemyController : MonoBehaviour
         {
             ChangeGravity();
         }
+        else
+        {
+            cooldownbar.SetCoolDown(Time.time - (nextFlipTime - 1 / coolDown));
+        }
     }
 
     void MovePlayer()
@@ -44,7 +50,7 @@ public class EnemyController : MonoBehaviour
         if (isOnGround)
         {
             float translate = Input.GetAxis("2PHorizontal") * speed * Time.deltaTime;
-            Debug.Log(translate);
+            //Debug.Log(translate);
             if (translate < 0 && facingRight == true)
             {
                 Flip();
@@ -76,6 +82,7 @@ public class EnemyController : MonoBehaviour
             //flipY = mySpriteRenderer.flipY;
             //Cooldown to prevent smashing buttons
             nextFlipTime = Time.time + 1 / coolDown;
+            cooldownbar.SetCoolDown(0);
         }
     }
 
