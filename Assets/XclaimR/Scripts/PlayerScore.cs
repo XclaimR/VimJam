@@ -28,13 +28,13 @@ public class PlayerScore : MonoBehaviour
 
     void Start()
     { 
-        float spawnY = Random.Range
-            (Camera.main.ScreenToWorldPoint(new Vector2(0, 35)).y, Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height-35)).y);
-        float spawnX = Random.Range
-            (Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).x, Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)).x);
-
-        Vector2 spawnPosition = new Vector2(spawnX, spawnY);
-        Instantiate(collectible, spawnPosition, Quaternion.identity);
+        //float spawnY = Random.Range
+        //    (Camera.main.ScreenToWorldPoint(new Vector2(0, 35)).y, Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height-35)).y);
+        //float spawnX = Random.Range
+        //    (Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).x, Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)).x);
+        //
+        //Vector2 spawnPosition = new Vector2(spawnX, spawnY);
+        //Instantiate(collectible, spawnPosition, Quaternion.identity);
         setScore();
     }
 

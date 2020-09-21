@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
         {
             cooldownbar.SetCoolDown(Time.time-(nextFlipTime - 1/coolDown));
         }
+        
     }
 
     void MovePlayer()
