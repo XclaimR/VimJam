@@ -6,13 +6,14 @@ public class RandomSpawnGen : MonoBehaviour
 {
     // Start is called before the first frame update
     public List<Transform> spawnPoints;
+    List<int> usedSpawnPoints = new List<int>();
+    List<int> usedspawnThis = new List<int>();
     public int sizeOfList;
     public GameObject[] spawnThis;
     public GameObject collectible;
 
     void Start()
     {
-        Debug.Log("Started");
         Invoke("Generate", 0);
     }
 
@@ -23,15 +24,15 @@ public class RandomSpawnGen : MonoBehaviour
         spawnThis = GameObject.FindGameObjectsWithTag("Collectible");
         foreach (GameObject BP in go)
             Addtarget(BP.transform);
-        
+        sizeOfList = spawnPoints.Count;
+        Debug.Log("Spawn Location Count : " + sizeOfList);
+        Invoke("Spawn", 0);
     }
 
     public void Addtarget(Transform BP)
     {
         spawnPoints.Add(BP);
-        sizeOfList = spawnPoints.Count;
-        Debug.Log("Spawn Location Count : " + sizeOfList);
-        Invoke("Spawn", 0);
+        
     }
 
     void Spawn()
@@ -39,10 +40,23 @@ public class RandomSpawnGen : MonoBehaviour
         for (int i = 0; i < spawnThis.Length; i++)
         {
             int randIndex = Random.Range(0, sizeOfList);
-            Debug.Log(randIndex);
+            while (usedSpawnPoints.Contains(randIndex))
+            {
+                randIndex = Random.Range(0, sizeOfList);
+            }
+            Debug.Log("Randindex Value : " + randIndex);
+            usedSpawnPoints.Add(randIndex);
             Transform sp = spawnPoints[randIndex];
-            Instantiate(spawnThis[Random.Range(0,spawnThis.Length)], sp.position, Quaternion.identity);
-            spawnPoints.RemoveAt(randIndex);
+            int st = Random.Range(0, spawnThis.Length);
+            while (usedspawnThis.Contains(st))
+            {
+                st = Random.Range(0, spawnThis.Length);
+            }
+            usedspawnThis.Add(st);
+            Instantiate(spawnThis[st], sp.position, Quaternion.identity);
+            //spawnPoints.RemoveAt(randIndex);
+            Destroy(spawnThis[st]);
+
         }
     }
 }
