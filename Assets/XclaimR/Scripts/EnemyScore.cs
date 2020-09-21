@@ -7,14 +7,19 @@ using System;
 
 public class EnemyScore : MonoBehaviour
 {
-    
+    GameObject collectible;
     public Text text;
-    private int score = 0;
-    
+    public static int score = 0;
+    public int winScore = 5;
+    public bool isHolding = false;
+    public GameObject collectibleloc;
+    bool follow = false;
+    public static List<GameObject> inZone = new List<GameObject>();
 
-    void Start()
+    private void setScore()
     {
-        setScore();
+        //score = PlayerPrefs.GetInt("AlienScore");
+        text.text = score.ToString();
     }
 
     void Update()
@@ -23,20 +28,53 @@ public class EnemyScore : MonoBehaviour
             PlayerPrefs.SetInt("AlienScore", 0);
             Application.Quit();
         }
+        if (follow == true)
+        {
+            collectible.transform.position = collectibleloc.transform.position;
+        }
+        setScore();
     }
 
-    private void setScore()
+    void Start()
     {
-        score = PlayerPrefs.GetInt("AlienScore");
-        text.text = score.ToString();
+        //setScore();
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag == "Collectible" && isHolding == false && !inZone.Contains(collider.gameObject))
+        {
+            follow = true;
+
+            collectible = collider.gameObject;
+            isHolding = true;
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+        if (collider.gameObject.tag == "Collectible" && PlayerScore.inZone.Contains(collider.gameObject))
+        {
+            PlayerScore.inZone.Remove(collider.gameObject);
+            PlayerScore.score--;
+        }
+
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if (collision.gameObject.name == "MoonGround" && isHolding == true)
         {
-            PlayerPrefs.SetInt("AlienScore", score+1);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            score++;
+            //PlayerPrefs.SetInt("AlienScore", score);
+            text.text = score.ToString();
+            if (score == winScore)
+            {
+                Debug.Log("Alien Won");
+                //PlayerPrefs.SetInt("AstroScore", 0);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+            inZone.Add(collectible);
+            collectible = null;
+            isHolding = false;
+            follow = false;
         }
     }
 }

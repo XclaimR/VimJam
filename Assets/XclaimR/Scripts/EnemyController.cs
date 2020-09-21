@@ -6,10 +6,12 @@ public class EnemyController : MonoBehaviour
 {
 
     public float speed = 5.0f;
+    public float holdSpeed = 2.5f;
     public bool isOnGround = false;
     public bool flipY;
     public float coolDown = 0.5f;
     public Cooldown cooldownbar;
+    public EnemyScore es;
 
     private Transform _transform;
     private Rigidbody2D _rigidbody;
@@ -49,7 +51,16 @@ public class EnemyController : MonoBehaviour
     {
         if (isOnGround)
         {
-            float translate = Input.GetAxis("2PHorizontal") * speed * Time.deltaTime;
+            float tempSpeed = speed;
+            if (es.isHolding == true)
+            {
+                tempSpeed = holdSpeed;
+            }
+            else
+            {
+                tempSpeed = speed;
+            }
+            float translate = Input.GetAxis("2PHorizontal") * tempSpeed * Time.deltaTime;
             //Debug.Log(translate);
             if (translate < 0 && facingRight == true)
             {

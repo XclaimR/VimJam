@@ -7,11 +7,15 @@ using UnityEngine.SceneManagement;
 public class PlayerScore : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject collectible;
+    private GameObject collectible;
     public Text text;
-    private int score = 0;
+    public static int score = 0;
     public int winScore = 5;
     public bool isHolding = false;
+    public GameObject collectibleloc;
+    bool follow = false;
+    public static List<GameObject> inZone = new List<GameObject>();
+    
 
     void Update()
     {
@@ -20,36 +24,40 @@ public class PlayerScore : MonoBehaviour
             PlayerPrefs.SetInt("AstroScore", 0);
             Application.Quit();
         }
+        if(follow == true)
+        {
+            collectible.transform.position = collectibleloc.transform.position;
+        }
+        setScore();
     }
 
     private void setScore()
     {
-        score = PlayerPrefs.GetInt("AstroScore");
-        
+        //score = PlayerPrefs.GetInt("AstroScore");
         text.text = score.ToString();
     }
 
     void Start()
     { 
-        //float spawnY = Random.Range
-        //    (Camera.main.ScreenToWorldPoint(new Vector2(0, 35)).y, Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height-35)).y);
-        //float spawnX = Random.Range
-        //    (Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).x, Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)).x);
-        //
-        //Vector2 spawnPosition = new Vector2(spawnX, spawnY);
-        //Instantiate(collectible, spawnPosition, Quaternion.identity);
-        setScore();
+        //setScore();
     }
 
     // Update is called once per frame
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collider.gameObject.tag == "Collectible" && isHolding == false)
+        if(collider.gameObject.tag == "Collectible" && isHolding == false && !inZone.Contains(collider.gameObject))
         {
-            Destroy(collider.gameObject);
-            
+            follow = true;
+            collectible = collider.gameObject;
             isHolding = true;
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            
+        }
+        if (collider.gameObject.tag == "Collectible" && EnemyScore.inZone.Contains(collider.gameObject))
+        {
+            EnemyScore.inZone.Remove(collider.gameObject);
+            EnemyScore.score--;
+            //EnemyScore.text.text = EnemyScore.score.ToString();
         }
     }
 
@@ -58,7 +66,7 @@ public class PlayerScore : MonoBehaviour
         if(collision.gameObject.name == "EarthGround" && isHolding == true)
         {
             score++;
-            PlayerPrefs.SetInt("AstroScore", score);
+            //PlayerPrefs.SetInt("AstroScore", score);
             text.text = score.ToString();
             if (score == winScore)
             {
@@ -66,7 +74,10 @@ public class PlayerScore : MonoBehaviour
                 //PlayerPrefs.SetInt("AstroScore", 0);
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
+            inZone.Add(collectible);
+            collectible = null;
             isHolding = false;
+            follow = false;
         }
     }
 }
