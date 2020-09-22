@@ -106,13 +106,15 @@ public class EnemyController : MonoBehaviour
         _transform.localScale = localScale;
     }
 
-    void OnCollisionEnter2D()
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        isOnGround = true;
+        if (collision.gameObject.tag == "Ground")
+            isOnGround = true;
     }
 
-    void OnCollisionExit2D()
+    void OnCollisionExit2D(Collision2D collision)
     {
-        isOnGround = false;
+        if (collision.gameObject.tag == "Ground")
+            isOnGround = false;
     }
 }

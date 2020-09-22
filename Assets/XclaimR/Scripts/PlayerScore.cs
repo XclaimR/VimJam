@@ -20,6 +20,8 @@ public class PlayerScore : MonoBehaviour
     public PlayerController pc;
     public PlayerScore ps;
     public float WaitTime = 5f;
+    public Rigidbody2D rb;
+    public BoxCollider2D bc;
 
     private void setScore()
     {
@@ -51,13 +53,16 @@ public class PlayerScore : MonoBehaviour
 
     IEnumerator StunScript()
     {
+        float temp = rb.gravityScale;
         pc.enabled = false;
         ps.enabled = false;
-        //rb.enabled = false;
+        bc.enabled = false;
+        rb.gravityScale = 0;
 
         yield return new WaitForSeconds(WaitTime);
 
-        //rb.enabled = true;
+        rb.gravityScale = temp;
+        bc.enabled = true;
         ps.enabled = true;
         pc.enabled = true;
     }

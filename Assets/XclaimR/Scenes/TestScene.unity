@@ -683,6 +683,18 @@ MonoBehaviour:
   cooldownbar: {fileID: 1440145759}
   es: {fileID: 650168426}
   onlyAffectPlayer: 1
+--- !u!61 &650168423 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 3359744836462406711, guid: 7a940b5d98f57534bbaac6e6aec8f32f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1340139728}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &650168424 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 3359744836462406710, guid: 7a940b5d98f57534bbaac6e6aec8f32f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1340139728}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &650168425 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3359744836462406709, guid: 7a940b5d98f57534bbaac6e6aec8f32f,
@@ -714,6 +726,8 @@ MonoBehaviour:
   ec: {fileID: 650168422}
   es: {fileID: 650168426}
   WaitTime: 5
+  rb: {fileID: 650168424}
+  bc: {fileID: 650168423}
 --- !u!1 &712435452
 GameObject:
   m_ObjectHideFlags: 0
@@ -1096,9 +1110,9 @@ GameObject:
   - component: {fileID: 1042006852}
   - component: {fileID: 1042006851}
   - component: {fileID: 1042006850}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RightWall
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2247,6 +2261,8 @@ MonoBehaviour:
   pc: {fileID: 1506128466}
   ps: {fileID: 1506128464}
   WaitTime: 5
+  rb: {fileID: 1506128468}
+  bc: {fileID: 1506128467}
 --- !u!114 &1506128466 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3359744836462406708, guid: 7a940b5d98f57534bbaac6e6aec8f32f,
@@ -2259,6 +2275,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccbe2a4eafe326044a6a507832a85a1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1506128467 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 3359744836462406711, guid: 7a940b5d98f57534bbaac6e6aec8f32f,
+    type: 3}
+  m_PrefabInstance: {fileID: 3359744835510525543}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &1506128468 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 3359744836462406710, guid: 7a940b5d98f57534bbaac6e6aec8f32f,
+    type: 3}
+  m_PrefabInstance: {fileID: 3359744835510525543}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1506128469 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3359744836462406709, guid: 7a940b5d98f57534bbaac6e6aec8f32f,
@@ -3544,6 +3572,11 @@ PrefabInstance:
     - target: {fileID: 3359744836462406710, guid: 7a940b5d98f57534bbaac6e6aec8f32f,
         type: 3}
       propertyPath: m_UseAutoMass
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3359744836462406710, guid: 7a940b5d98f57534bbaac6e6aec8f32f,
+        type: 3}
+      propertyPath: m_BodyType
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3359744836462406711, guid: 7a940b5d98f57534bbaac6e6aec8f32f,

@@ -20,7 +20,8 @@ public class EnemyScore : MonoBehaviour
     public EnemyController ec;
     public EnemyScore es;
     public float WaitTime = 5f;
-    //public Rigidbody2D rb;
+    public Rigidbody2D rb;
+    public BoxCollider2D bc;
 
     private void setScore()
     {
@@ -51,13 +52,16 @@ public class EnemyScore : MonoBehaviour
 
     IEnumerator StunScript()
     {
+        float temp = rb.gravityScale;
         ec.enabled = false;
         es.enabled = false;
-        //rb.enabled = false;
+        bc.enabled = false;
+        rb.gravityScale = 0;
 
         yield return new WaitForSeconds(WaitTime);
 
-        //rb.enabled = true;
+        rb.gravityScale = temp;
+        bc.enabled = true;
         es.enabled = true;
         ec.enabled = true;
     }
