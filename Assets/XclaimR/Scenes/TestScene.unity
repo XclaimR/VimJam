@@ -819,7 +819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64774f16bece5424fa28fb9c71b1896d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeRemaining: 20
+  timeRemaining: 90
   timerIsRunning: 0
   timeText: {fileID: 661331060}
   winner: {fileID: 1202542151}
