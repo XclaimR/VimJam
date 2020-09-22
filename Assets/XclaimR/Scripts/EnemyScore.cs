@@ -32,7 +32,7 @@ public class EnemyScore : MonoBehaviour
     void Update()
     {
         if (Input.GetKey("escape")) { 
-            PlayerPrefs.SetInt("AlienScore", 0);
+            PlayerPrefs.SetInt("AlienRound", 0);
             Application.Quit();
         }
         if (follow == true)
@@ -104,7 +104,7 @@ public class EnemyScore : MonoBehaviour
             if (score == winScore)
             {
                 Debug.Log("Alien Won");
-                //PlayerPrefs.SetInt("AstroScore", 0);
+                PlayerPrefs.SetInt("AlienRound", PlayerPrefs.GetInt("AlienRound") + 1);
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
             inZone.Add(collectible);

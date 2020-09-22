@@ -33,7 +33,7 @@ public class PlayerScore : MonoBehaviour
     {
         if (Input.GetKey("escape"))
         {
-            PlayerPrefs.SetInt("AstroScore", 0);
+            PlayerPrefs.SetInt("AstroRound", 0);
             Application.Quit();
         }
         if(follow == true)
@@ -107,7 +107,7 @@ public class PlayerScore : MonoBehaviour
             if (score == winScore)
             {
                 Debug.Log("Astro Won");
-                //PlayerPrefs.SetInt("AstroScore", 0);
+                PlayerPrefs.SetInt("AstroRound", PlayerPrefs.GetInt("AstroRound")+1);
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
             inZone.Add(collectible);
