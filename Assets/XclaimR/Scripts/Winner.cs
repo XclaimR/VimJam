@@ -20,7 +20,7 @@ public class Winner : MonoBehaviour
             Debug.Log("Alien Wins");
             PlayerPrefs.SetInt("AlienRound", PlayerPrefs.GetInt("AlienRound") + 1);
         }
-        else
+        if(ps.score == es.score)
         {
             Debug.Log("Tied");
         }
