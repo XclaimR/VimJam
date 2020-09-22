@@ -9,47 +9,91 @@ public class PlayerScore : MonoBehaviour
     // Start is called before the first frame update
     public GameObject collectible;
     public Text text;
-    private int score = 0;
+    public int score = 0;
     public int winScore = 5;
     public bool isHolding = false;
+    public GameObject collectibleloc;
+    bool follow = false;
+    public List<GameObject> inZone = new List<GameObject>();
+    public EnemyScore es;
+    public bool steal = false;
+    public PlayerController pc;
+    public PlayerScore ps;
+    public float WaitTime = 5f;
+    public Rigidbody2D rb;
+    public BoxCollider2D bc;
+
+    private void setScore()
+    {
+        //score = PlayerPrefs.GetInt("AstroScore");
+        text.text = score.ToString();
+    }
 
     void Update()
     {
         if (Input.GetKey("escape"))
         {
-            PlayerPrefs.SetInt("AstroScore", 0);
+            PlayerPrefs.SetInt("AstroRound", 0);
             Application.Quit();
         }
+        if(follow == true)
+        {
+            collectible.transform.position = collectibleloc.transform.position;
+        }
+        if (steal == true)
+        {
+            isHolding = false;
+            follow = false;
+            collectible = null;
+            steal = false;
+            StartCoroutine("StunScript");
+        }
+        setScore();
     }
 
-    private void setScore()
+    IEnumerator StunScript()
     {
-        score = PlayerPrefs.GetInt("AstroScore");
-        
-        text.text = score.ToString();
+        float temp = rb.gravityScale;
+        pc.enabled = false;
+        ps.enabled = false;
+        bc.enabled = false;
+        rb.gravityScale = 0;
+
+        yield return new WaitForSeconds(WaitTime);
+
+        rb.gravityScale = temp;
+        bc.enabled = true;
+        ps.enabled = true;
+        pc.enabled = true;
     }
 
     void Start()
-    { 
-        //float spawnY = Random.Range
-        //    (Camera.main.ScreenToWorldPoint(new Vector2(0, 35)).y, Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height-35)).y);
-        //float spawnX = Random.Range
-        //    (Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).x, Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)).x);
-        //
-        //Vector2 spawnPosition = new Vector2(spawnX, spawnY);
-        //Instantiate(collectible, spawnPosition, Quaternion.identity);
-        setScore();
+    {
+        //setScore();
+        
     }
 
     // Update is called once per frame
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collider.gameObject.tag == "Collectible" && isHolding == false)
+        if(collider.gameObject.tag == "Collectible" && isHolding == false && !inZone.Contains(collider.gameObject))
         {
-            Destroy(collider.gameObject);
-            
+            follow = true;
+            collectible = collider.gameObject;
             isHolding = true;
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            if(collider.gameObject == es.collectible)
+            {
+                Debug.Log("Stealing from Alien");
+                es.steal = true;
+                Debug.Log("Steal Value : " + es.steal);
+            }
+        }
+        if (collider.gameObject.tag == "Collectible" && es.inZone.Contains(collider.gameObject))
+        {
+            es.inZone.Remove(collider.gameObject);
+            es.score--;
+            //EnemyScore.text.text = EnemyScore.score.ToString();
         }
     }
 
@@ -58,15 +102,18 @@ public class PlayerScore : MonoBehaviour
         if(collision.gameObject.name == "EarthGround" && isHolding == true)
         {
             score++;
-            PlayerPrefs.SetInt("AstroScore", score);
+            //PlayerPrefs.SetInt("AstroScore", score);
             text.text = score.ToString();
             if (score == winScore)
             {
                 Debug.Log("Astro Won");
-                //PlayerPrefs.SetInt("AstroScore", 0);
+                PlayerPrefs.SetInt("AstroRound", PlayerPrefs.GetInt("AstroRound")+1);
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
+            inZone.Add(collectible);
+            collectible = null;
             isHolding = false;
+            follow = false;
         }
     }
 }

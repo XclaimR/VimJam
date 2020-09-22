@@ -6,10 +6,12 @@ public class EnemyController : MonoBehaviour
 {
 
     public float speed = 5.0f;
+    public float holdSpeed = 2.5f;
     public bool isOnGround = false;
     public bool flipY;
     public float coolDown = 0.5f;
     public Cooldown cooldownbar;
+    public EnemyScore es;
 
     private Transform _transform;
     private Rigidbody2D _rigidbody;
@@ -49,7 +51,16 @@ public class EnemyController : MonoBehaviour
     {
         if (isOnGround)
         {
-            float translate = Input.GetAxis("2PHorizontal") * speed * Time.deltaTime;
+            float tempSpeed = speed;
+            if (es.isHolding == true)
+            {
+                tempSpeed = holdSpeed;
+            }
+            else
+            {
+                tempSpeed = speed;
+            }
+            float translate = Input.GetAxis("2PHorizontal") * tempSpeed * Time.deltaTime;
             //Debug.Log(translate);
             if (translate < 0 && facingRight == true)
             {
@@ -59,7 +70,7 @@ public class EnemyController : MonoBehaviour
             {
                 Flip();
             }
-            _transform.Translate(Mathf.Abs(translate), 0, 0);
+            _transform.Translate(-translate, 0, 0);
         }
     }
 
@@ -89,17 +100,21 @@ public class EnemyController : MonoBehaviour
     void Flip()
     {
         facingRight = !facingRight;
-
-        _transform.Rotate(0f, 180f, 0f);
+        Vector3 localScale = _transform.localScale;
+        //_transform.Rotate(0f, 180f, 0f);
+        localScale.x *= -1;
+        _transform.localScale = localScale;
     }
 
-    void OnCollisionEnter2D()
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        isOnGround = true;
+        if (collision.gameObject.tag == "Ground")
+            isOnGround = true;
     }
 
-    void OnCollisionExit2D()
+    void OnCollisionExit2D(Collision2D collision)
     {
-        isOnGround = false;
+        if (collision.gameObject.tag == "Ground")
+            isOnGround = false;
     }
 }
