@@ -70,7 +70,7 @@ public class EnemyController : MonoBehaviour
             {
                 Flip();
             }
-            _transform.Translate(Mathf.Abs(translate), 0, 0);
+            _transform.Translate(-translate, 0, 0);
         }
     }
 
@@ -100,8 +100,10 @@ public class EnemyController : MonoBehaviour
     void Flip()
     {
         facingRight = !facingRight;
-
-        _transform.Rotate(0f, 180f, 0f);
+        Vector3 localScale = _transform.localScale;
+        //_transform.Rotate(0f, 180f, 0f);
+        localScale.x *= -1;
+        _transform.localScale = localScale;
     }
 
     void OnCollisionEnter2D()

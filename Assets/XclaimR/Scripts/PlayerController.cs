@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
                 tempSpeed = speed;
             }
             float translate = Input.GetAxis("1PHorizontal") * tempSpeed * Time.deltaTime;
-            //Debug.Log(translate);
+            Debug.Log(translate);
             if(translate < 0 && facingRight == true)
             {
                 Flip();
@@ -70,8 +70,10 @@ public class PlayerController : MonoBehaviour
             {
                 Flip();
             }
-            _transform.Translate(Mathf.Abs(translate), 0, 0);
+            _transform.Translate(translate, 0, 0);
+            //_rigidbody.AddForce(new Vector2(translate/10000, 0));
         }
+       
     }
 
     void ChangeGravity()
@@ -100,8 +102,10 @@ public class PlayerController : MonoBehaviour
     void Flip()
     {
         facingRight = !facingRight;
-
-        _transform.Rotate(0f, 180f, 0f);
+        Vector3 localScale = _transform.localScale;
+        //_transform.Rotate(0f, 180f, 0f);
+        localScale.x *= -1;
+        _transform.localScale = localScale;
     }
 
     void OnCollisionEnter2D()

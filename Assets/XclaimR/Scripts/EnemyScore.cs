@@ -7,14 +7,20 @@ using System;
 
 public class EnemyScore : MonoBehaviour
 {
-    GameObject collectible;
+    public GameObject collectible;
     public Text text;
-    public static int score = 0;
+    public int score = 0;
     public int winScore = 5;
     public bool isHolding = false;
     public GameObject collectibleloc;
-    bool follow = false;
-    public static List<GameObject> inZone = new List<GameObject>();
+    public bool follow = false;
+    public List<GameObject> inZone = new List<GameObject>();
+    public PlayerScore ps;
+    public bool steal = false;
+    public EnemyController ec;
+    public EnemyScore es;
+    public float WaitTime = 5f;
+    //public Rigidbody2D rb;
 
     private void setScore()
     {
@@ -32,7 +38,28 @@ public class EnemyScore : MonoBehaviour
         {
             collectible.transform.position = collectibleloc.transform.position;
         }
+        if(steal == true)
+        {
+            isHolding = false;
+            follow = false;
+            collectible = null;
+            steal = false;
+            StartCoroutine("StunScript");
+        }
         setScore();
+    }
+
+    IEnumerator StunScript()
+    {
+        ec.enabled = false;
+        es.enabled = false;
+        //rb.enabled = false;
+
+        yield return new WaitForSeconds(WaitTime);
+
+        //rb.enabled = true;
+        es.enabled = true;
+        ec.enabled = true;
     }
 
     void Start()
@@ -45,15 +72,20 @@ public class EnemyScore : MonoBehaviour
         if (collider.gameObject.tag == "Collectible" && isHolding == false && !inZone.Contains(collider.gameObject))
         {
             follow = true;
-
             collectible = collider.gameObject;
             isHolding = true;
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            if (collider.gameObject == ps.collectible)
+            {
+                //Debug.Log("Stealing from Astro");
+                ps.steal = true;
+                //Debug.Log("Steal Value : " + ps.steal);
+            }
         }
-        if (collider.gameObject.tag == "Collectible" && PlayerScore.inZone.Contains(collider.gameObject))
+        if (collider.gameObject.tag == "Collectible" && ps.inZone.Contains(collider.gameObject))
         {
-            PlayerScore.inZone.Remove(collider.gameObject);
-            PlayerScore.score--;
+            ps.inZone.Remove(collider.gameObject);
+            ps.score--;
         }
 
     }

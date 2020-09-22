@@ -25,7 +25,7 @@ public class RandomSpawnGen : MonoBehaviour
         foreach (GameObject BP in go)
             Addtarget(BP.transform);
         sizeOfList = spawnPoints.Count;
-        Debug.Log("Spawn Location Count : " + sizeOfList);
+        //Debug.Log("Spawn Location Count : " + sizeOfList);
         Invoke("Spawn", 0);
     }
 
@@ -44,7 +44,7 @@ public class RandomSpawnGen : MonoBehaviour
             {
                 randIndex = Random.Range(0, sizeOfList);
             }
-            Debug.Log("Randindex Value : " + randIndex);
+            //Debug.Log("Randindex Value : " + randIndex);
             usedSpawnPoints.Add(randIndex);
             Transform sp = spawnPoints[randIndex];
             int st = Random.Range(0, spawnThis.Length);
