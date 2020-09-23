@@ -28,6 +28,6 @@ public class MenuStart : MonoBehaviour
 
     void OnMouseUp()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        SceneManager.LoadScene("TestScene");
     }
 }
