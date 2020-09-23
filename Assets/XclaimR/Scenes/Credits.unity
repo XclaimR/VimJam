@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -357,7 +357,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 04a8fb43fefd2ef47afd5a0256c9e6eb, type: 3}
+    m_Font: {fileID: 12800000, guid: 41239953b3e270245885da4e72dc35fc, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
@@ -435,7 +435,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 04a8fb43fefd2ef47afd5a0256c9e6eb, type: 3}
+    m_Font: {fileID: 12800000, guid: f500ca27288e82546a98f5f4e2a6405f, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
@@ -695,7 +695,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 04a8fb43fefd2ef47afd5a0256c9e6eb, type: 3}
+    m_Font: {fileID: 12800000, guid: f500ca27288e82546a98f5f4e2a6405f, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
@@ -845,7 +845,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 04a8fb43fefd2ef47afd5a0256c9e6eb, type: 3}
+    m_Font: {fileID: 12800000, guid: 41239953b3e270245885da4e72dc35fc, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
@@ -951,7 +951,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 04a8fb43fefd2ef47afd5a0256c9e6eb, type: 3}
+    m_Font: {fileID: 12800000, guid: 8604c45568dd7dc45801a0e2199892c1, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
@@ -1042,7 +1042,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 04a8fb43fefd2ef47afd5a0256c9e6eb, type: 3}
+    m_Font: {fileID: 12800000, guid: 347bf272fb2d4ff449c512d9777fe925, type: 3}
     m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0
