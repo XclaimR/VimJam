@@ -12,12 +12,14 @@ public class EnemyController : MonoBehaviour
     public float coolDown = 0.5f;
     public Cooldown cooldownbar;
     public EnemyScore es;
+    public GameObject CollectibleLoc;
 
     private Transform _transform;
     private Rigidbody2D _rigidbody;
     private SpriteRenderer mySpriteRenderer;
     private bool facingRight = false;
     private float nextFlipTime = 0f;
+    public Animator animator;
 
     //Stuff Added...
     public bool onlyAffectPlayer = true;
@@ -62,6 +64,7 @@ public class EnemyController : MonoBehaviour
             }
             float translate = Input.GetAxis("2PHorizontal") * tempSpeed * Time.deltaTime;
             //Debug.Log(translate);
+            
             if (translate < 0 && facingRight == true)
             {
                 Flip();
@@ -70,6 +73,7 @@ public class EnemyController : MonoBehaviour
             {
                 Flip();
             }
+            animator.SetFloat("is_Move", translate);
             _transform.Translate(-translate, 0, 0);
         }
     }
@@ -100,10 +104,12 @@ public class EnemyController : MonoBehaviour
     void Flip()
     {
         facingRight = !facingRight;
-        Vector3 localScale = _transform.localScale;
+        float temp = (-CollectibleLoc.transform.position.x + _transform.position.x) * 2 + CollectibleLoc.transform.position.x;
+        CollectibleLoc.transform.position = new Vector3(temp, CollectibleLoc.transform.position.y, CollectibleLoc.transform.position.z);
+        //Vector3 localScale = _transform.localScale;
         //_transform.Rotate(0f, 180f, 0f);
-        localScale.x *= -1;
-        _transform.localScale = localScale;
+        //localScale.x *= -1;
+        //_transform.localScale = localScale;
     }
 
     void OnCollisionEnter2D(Collision2D collision)

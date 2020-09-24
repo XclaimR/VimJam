@@ -10,16 +10,19 @@ public class MenuCredits : MonoBehaviour
     public Text credits;
     private int fontSize;
     private Color tempColor;
+    private AudioSource audio;
 
     void Start()
     {
         tempColor = credits.color;
         fontSize = credits.fontSize;
+        audio = GetComponent<AudioSource>();
     }
 
     void OnMouseEnter()
     {
         credits.fontSize = fontSize + 5;
+        audio.Play();
     }
 
     void OnMouseExit()

@@ -22,6 +22,7 @@ public class PlayerScore : MonoBehaviour
     public float WaitTime = 5f;
     public Rigidbody2D rb;
     public BoxCollider2D bc;
+    private AudioSource audio;
 
     private void setScore()
     {
@@ -70,7 +71,7 @@ public class PlayerScore : MonoBehaviour
     void Start()
     {
         //setScore();
-        
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -78,6 +79,7 @@ public class PlayerScore : MonoBehaviour
     {
         if(collider.gameObject.tag == "Collectible" && isHolding == false && !inZone.Contains(collider.gameObject))
         {
+            audio.Play();
             follow = true;
             collectible = collider.gameObject;
             isHolding = true;
@@ -91,6 +93,7 @@ public class PlayerScore : MonoBehaviour
         }
         if (collider.gameObject.tag == "Collectible" && es.inZone.Contains(collider.gameObject))
         {
+            audio.Play();
             es.inZone.Remove(collider.gameObject);
             es.score--;
             //EnemyScore.text.text = EnemyScore.score.ToString();

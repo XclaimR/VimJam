@@ -10,16 +10,19 @@ public class CreditsBack : MonoBehaviour
     public Text back;
     private int fontSize;
     private Color tempColor;
+    private AudioSource audio;
 
     void Start()
     {
         tempColor = back.color;
         fontSize = back.fontSize;
+        audio = GetComponent<AudioSource>();
     }
 
     void OnMouseEnter()
     {
         back.fontSize = fontSize + 5;
+        audio.Play();
     }
 
     void OnMouseExit()

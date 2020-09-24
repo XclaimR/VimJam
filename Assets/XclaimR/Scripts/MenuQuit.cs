@@ -10,16 +10,19 @@ public class MenuQuit : MonoBehaviour
     public Text quit;
     private int fontSize;
     private Color tempColor;
+    private AudioSource audio;
 
     void Start()
     {
         tempColor = quit.color;
         fontSize = quit.fontSize;
+        audio = GetComponent<AudioSource>();
     }
 
     void OnMouseEnter()
     {
         quit.fontSize = fontSize + 5;
+        audio.Play();
     }
 
     void OnMouseExit()

@@ -22,6 +22,7 @@ public class EnemyScore : MonoBehaviour
     public float WaitTime = 5f;
     public Rigidbody2D rb;
     public BoxCollider2D bc;
+    private AudioSource audio;
 
     private void setScore()
     {
@@ -69,12 +70,14 @@ public class EnemyScore : MonoBehaviour
     void Start()
     {
         //setScore();
+        audio = GetComponent<AudioSource>();
     }
 
     void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.tag == "Collectible" && isHolding == false && !inZone.Contains(collider.gameObject))
         {
+            audio.Play();
             follow = true;
             collectible = collider.gameObject;
             isHolding = true;
@@ -88,6 +91,7 @@ public class EnemyScore : MonoBehaviour
         }
         if (collider.gameObject.tag == "Collectible" && ps.inZone.Contains(collider.gameObject))
         {
+            audio.Play();
             ps.inZone.Remove(collider.gameObject);
             ps.score--;
         }

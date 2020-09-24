@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     public float coolDown = 0.5f;
     public Cooldown cooldownbar;
     public PlayerScore ps;
+    public Animator animator;
+    public GameObject CollectibleLoc;
 
     private Transform _transform;
     private Rigidbody2D _rigidbody;
@@ -69,6 +71,7 @@ public class PlayerController : MonoBehaviour
             {
                 Flip();
             }
+            animator.SetFloat("is_Move", translate);
             _transform.Translate(translate, 0, 0);
             //_rigidbody.AddForce(new Vector2(translate/10000, 0));
         }
@@ -101,10 +104,12 @@ public class PlayerController : MonoBehaviour
     void Flip()
     {
         facingRight = !facingRight;
-        Vector3 localScale = _transform.localScale;
+        float temp = (-CollectibleLoc.transform.position.x + _transform.position.x)*2 + CollectibleLoc.transform.position.x;
+        CollectibleLoc.transform.position = new Vector3(temp, CollectibleLoc.transform.position.y, CollectibleLoc.transform.position.z);
+        //Vector3 localScale = _transform.localScale;
         //_transform.Rotate(0f, 180f, 0f);
-        localScale.x *= -1;
-        _transform.localScale = localScale;
+        //localScale.x *= -1;
+        //_transform.localScale = localScale;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
