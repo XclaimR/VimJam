@@ -107,12 +107,12 @@ public class PlayerScore : MonoBehaviour
             score++;
             //PlayerPrefs.SetInt("AstroScore", score);
             text.text = score.ToString();
-            if (score == winScore)
-            {
-                Debug.Log("Astro Won");
-                PlayerPrefs.SetInt("AstroRound", PlayerPrefs.GetInt("AstroRound")+1);
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            }
+            //if (score == winScore)
+            //{
+            //    Debug.Log("Astro Won");
+            //    PlayerPrefs.SetInt("AstroRound", PlayerPrefs.GetInt("AstroRound")+1);
+            //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            //}
             inZone.Add(collectible);
             collectible = null;
             isHolding = false;

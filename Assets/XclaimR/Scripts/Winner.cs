@@ -41,7 +41,17 @@ public class Winner : MonoBehaviour
 
     void ChangeScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(RandomScene(1,4,SceneManager.GetActiveScene().buildIndex));
+    }
+
+    int RandomScene(int min, int max, int except)
+    {
+        int result = except;
+        while(result == except)
+        {
+            result = Random.Range(min, max);
+        }
+        return result;
     }
 
     

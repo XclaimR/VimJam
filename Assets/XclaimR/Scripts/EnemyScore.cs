@@ -105,12 +105,12 @@ public class EnemyScore : MonoBehaviour
             score++;
             //PlayerPrefs.SetInt("AlienScore", score);
             text.text = score.ToString();
-            if (score == winScore)
-            {
-                Debug.Log("Alien Won");
-                PlayerPrefs.SetInt("AlienRound", PlayerPrefs.GetInt("AlienRound") + 1);
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            }
+            //if (score == winScore)
+            //{
+            //    Debug.Log("Alien Won");
+            //    PlayerPrefs.SetInt("AlienRound", PlayerPrefs.GetInt("AlienRound") + 1);
+            //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            //}
             inZone.Add(collectible);
             collectible = null;
             isHolding = false;

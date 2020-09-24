@@ -36,6 +36,6 @@ public class Rounds : MonoBehaviour
 
     void ChangeScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("GameOver");
     }
 }
