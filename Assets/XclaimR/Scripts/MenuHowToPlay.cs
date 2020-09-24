@@ -4,35 +4,34 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class MenuStart : MonoBehaviour
+public class MenuHowToPlay : MonoBehaviour
 {
-    public Text start;
+    // Start is called before the first frame update
+    public Text howtoplay;
     private int fontSize;
     private Color tempColor;
     private AudioSource audio;
-    //public AudioClip Mysound;
 
     void Start()
     {
-        tempColor = start.color;
-        fontSize = start.fontSize;
+        tempColor = howtoplay.color;
+        fontSize = howtoplay.fontSize;
         audio = GetComponent<AudioSource>();
     }
 
     void OnMouseEnter()
     {
-        start.fontSize = fontSize + 5;
+        howtoplay.fontSize = fontSize + 5;
         audio.Play();
     }
 
     void OnMouseExit()
     {
-        start.fontSize = fontSize;
+        howtoplay.fontSize = fontSize;
     }
-
 
     void OnMouseUp()
     {
-        SceneManager.LoadScene(Random.Range(1,4));
+        SceneManager.LoadScene("HowToPlay");
     }
 }
