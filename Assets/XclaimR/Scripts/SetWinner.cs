@@ -11,11 +11,13 @@ public class SetWinner : MonoBehaviour
         int winner = PlayerPrefs.GetInt("Winner");
         if(winner == 0)
         {
-            winnerText.text = "Winner is Astro";
+            winnerText.color = new Color(255f / 255f, 28f / 255f, 28f/255f);
+            winnerText.text = "Player 1";
         }
         if(winner == 1)
         {
-            winnerText.text = "Winner is Alien";
+            winnerText.color = new Color(87f / 255f, 221f / 255f, 24f / 255f);
+            winnerText.text = "Player 2";
         }
     }
 

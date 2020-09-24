@@ -21,7 +21,7 @@ public class Rounds : MonoBehaviour
             Debug.Log("GAME OVER ASTRO WINS");
             PlayerPrefs.SetInt("AstroRound", 0);
             PlayerPrefs.SetInt("AlienRound", 0);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            Invoke("ChangeScene", 2);
         }
         if(PlayerPrefs.GetInt("AlienRound") == 2)
         {
@@ -29,8 +29,13 @@ public class Rounds : MonoBehaviour
             Debug.Log("GAME OVER ALIEN WINS");
             PlayerPrefs.SetInt("AstroRound", 0);
             PlayerPrefs.SetInt("AlienRound", 0);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            Invoke("ChangeScene", 2);
         }
         
+    }
+
+    void ChangeScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
