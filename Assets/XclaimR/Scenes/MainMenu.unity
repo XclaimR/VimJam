@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 13, y: -14.713501}
+  m_AnchoredPosition: {x: 13, y: 17.586483}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &209632572
@@ -644,9 +644,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 349ed5fbca9e56941b055d590191ec81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  start: {fileID: 0}
-  quit: {fileID: 0}
-  credits: {fileID: 0}
 --- !u!1 &998011733
 GameObject:
   m_ObjectHideFlags: 0
@@ -786,11 +783,10 @@ GameObject:
   - component: {fileID: 1163492910}
   - component: {fileID: 1163492909}
   - component: {fileID: 1163492908}
-  - component: {fileID: 1163492907}
   - component: {fileID: 1163492906}
   - component: {fileID: 1163492905}
   m_Layer: 5
-  m_Name: Credits (1)
+  m_Name: HowToPlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -812,7 +808,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 245, y: -182}
+  m_AnchoredPosition: {x: 340.4, y: -157.4}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1163492905
@@ -824,9 +820,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1163492903}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a5cf6f583ff21b478bdb4ef98e9cf01, type: 3}
+  m_Script: {fileID: 11500000, guid: f89eeaf23a5cde94eb652eac09ec3ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  howtoplay: {fileID: 1163492909}
 --- !u!82 &1163492906
 AudioSource:
   m_ObjectHideFlags: 0
@@ -847,7 +844,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 0.8656864
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -923,19 +920,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1163492907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1163492903}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ced71f85747d015439971fcb268e9d2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  credits: {fileID: 1163492909}
 --- !u!61 &1163492908
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -949,7 +933,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -2.0226479, y: 0.6334877}
+  m_Offset: {x: -4.6716514, y: 2.146615}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -960,7 +944,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 163.38992, y: 24.424969}
+  m_Size: {x: 35.527412, y: 31.990679}
   m_EdgeRadius: 0
 --- !u!114 &1163492909
 MonoBehaviour:
@@ -983,7 +967,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 347bf272fb2d4ff449c512d9777fe925, type: 3}
-    m_FontSize: 30
+    m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -994,7 +978,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: How to play?
+  m_Text: '?'
 --- !u!222 &1163492910
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1106,7 +1090,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10, y: -132.29999}
+  m_AnchoredPosition: {x: 10, y: -100}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1445698050
@@ -1322,7 +1306,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10, y: -78.3}
+  m_AnchoredPosition: {x: 10, y: -46.00002}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1599793082
@@ -1537,7 +1521,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 13, y: 117.70001}
+  m_AnchoredPosition: {x: 13, y: 150}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.49999928}
 --- !u!61 &1786618112
