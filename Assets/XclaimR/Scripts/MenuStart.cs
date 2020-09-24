@@ -33,6 +33,6 @@ public class MenuStart : MonoBehaviour
 
     void OnMouseUp()
     {
-        SceneManager.LoadScene(Random.Range(1,4));
+        SceneManager.LoadScene(1);
     }
 }
