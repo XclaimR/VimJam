@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.20749113, g: 0.2114747, b: 0.1457682, a: 1}
+  m_IndirectSpecularColor: {r: 0.20749141, g: 0.2114749, b: 0.14576823, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -719,17 +719,28 @@ PrefabInstance:
     - target: {fileID: 1559706363218768529, guid: 7777efbd5d4cec94faca49bee7522d93,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.34901956
+      value: 0.21960786
       objectReference: {fileID: 0}
     - target: {fileID: 1559706363218768529, guid: 7777efbd5d4cec94faca49bee7522d93,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.93333334
+      value: 0.21960786
       objectReference: {fileID: 0}
     - target: {fileID: 1559706363218768529, guid: 7777efbd5d4cec94faca49bee7522d93,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.4854549
+      value: 0.21960786
+      objectReference: {fileID: 0}
+    - target: {fileID: 1559706363218768529, guid: 7777efbd5d4cec94faca49bee7522d93,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f599b83d5150142f4a751cd9104ce797,
+        type: 3}
+    - target: {fileID: 1559706363218768529, guid: 7777efbd5d4cec94faca49bee7522d93,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1559706363218768622, guid: 7777efbd5d4cec94faca49bee7522d93,
         type: 3}
@@ -2148,18 +2159,24 @@ PrefabInstance:
     - target: {fileID: 1559706363218768529, guid: 7777efbd5d4cec94faca49bee7522d93,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.34901956
+      value: 0.21960786
       objectReference: {fileID: 0}
     - target: {fileID: 1559706363218768529, guid: 7777efbd5d4cec94faca49bee7522d93,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.6181522
+      value: 0.21960786
       objectReference: {fileID: 0}
     - target: {fileID: 1559706363218768529, guid: 7777efbd5d4cec94faca49bee7522d93,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.93333334
+      value: 0.21960786
       objectReference: {fileID: 0}
+    - target: {fileID: 1559706363218768529, guid: 7777efbd5d4cec94faca49bee7522d93,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 279dd8c42c6594761b2dcac0b35235db,
+        type: 3}
     - target: {fileID: 1559706363218768622, guid: 7777efbd5d4cec94faca49bee7522d93,
         type: 3}
       propertyPath: m_LocalPosition.x
