@@ -32,6 +32,6 @@ public class MenuQuit : MonoBehaviour
 
     void OnMouseUp()
     {
-        Application.Quit();
+        Application.OpenURL("https://xclaimr.itch.io/comet-me-bro");
     }
 }

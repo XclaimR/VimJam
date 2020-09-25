@@ -32,6 +32,6 @@ public class MenuHowToPlay : MonoBehaviour
 
     void OnMouseUp()
     {
-        SceneManager.LoadScene("HowToPlay");
+        SceneManager.LoadScene(Random.Range(1,4));
     }
 }
