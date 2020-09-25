@@ -32,6 +32,6 @@ public class CreditsBack : MonoBehaviour
 
     void OnMouseUp()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene(Random.Range(1, 4));
     }
 }

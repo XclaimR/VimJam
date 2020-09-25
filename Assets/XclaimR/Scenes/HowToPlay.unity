@@ -216,7 +216,7 @@ GameObject:
   - component: {fileID: 341880330}
   - component: {fileID: 341880336}
   m_Layer: 5
-  m_Name: Back
+  m_Name: Next
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -238,7 +238,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -315, y: 179}
+  m_AnchoredPosition: {x: 320.4, y: 179}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.49999928}
 --- !u!82 &341880330
@@ -421,7 +421,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: back
+  m_Text: 'next
+
+'
 --- !u!222 &341880335
 CanvasRenderer:
   m_ObjectHideFlags: 0
