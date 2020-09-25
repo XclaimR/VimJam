@@ -23,6 +23,7 @@ public class PlayerScore : MonoBehaviour
     public Rigidbody2D rb;
     public BoxCollider2D bc;
     private AudioSource audio;
+    public Animator animator;
 
     private void setScore()
     {
@@ -58,11 +59,13 @@ public class PlayerScore : MonoBehaviour
         pc.enabled = false;
         ps.enabled = false;
         bc.enabled = false;
+        animator.enabled = false;
         rb.gravityScale = 0;
 
         yield return new WaitForSeconds(WaitTime);
 
         rb.gravityScale = temp;
+        animator.enabled = true;
         bc.enabled = true;
         ps.enabled = true;
         pc.enabled = true;

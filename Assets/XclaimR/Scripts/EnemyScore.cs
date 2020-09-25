@@ -23,6 +23,7 @@ public class EnemyScore : MonoBehaviour
     public Rigidbody2D rb;
     public BoxCollider2D bc;
     private AudioSource audio;
+    public Animator animator;
 
     private void setScore()
     {
@@ -58,10 +59,12 @@ public class EnemyScore : MonoBehaviour
         es.enabled = false;
         bc.enabled = false;
         rb.gravityScale = 0;
+        animator.enabled = false;
 
         yield return new WaitForSeconds(WaitTime);
 
         rb.gravityScale = temp;
+        animator.enabled = true;
         bc.enabled = true;
         es.enabled = true;
         ec.enabled = true;

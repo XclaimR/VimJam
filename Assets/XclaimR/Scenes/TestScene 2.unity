@@ -992,6 +992,7 @@ MonoBehaviour:
   WaitTime: 5
   rb: {fileID: 650168424}
   bc: {fileID: 650168423}
+  animator: {fileID: 650168428}
 --- !u!82 &650168427
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3396,6 +3397,7 @@ MonoBehaviour:
   WaitTime: 5
   rb: {fileID: 1506128468}
   bc: {fileID: 1506128467}
+  animator: {fileID: 1506128471}
 --- !u!82 &1506128465
 AudioSource:
   m_ObjectHideFlags: 0
